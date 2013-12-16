@@ -1,0 +1,41 @@
+  <!DOCTYPE html>
+  <html lang="fr" ng-app="ExampleApp">
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Tuto" />
+    <meta name="description" content="Tuto" />
+    <meta name="author" content="auteur">
+    <script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+    <script type='text/javascript' src="angular.min.js"></script>
+    <script type='text/javascript' src="angular-route.min.js"></script>
+    <script type='text/javascript' src="angular-resource.min.js"></script>
+    <script type='text/javascript' src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Angular JS Tuto</title>
+  </head>
+  <body>
+
+    <img class="picture" ng-src="{{picture}}" />
+
+    1 - Version normale avec filtre et consommation JSON
+    <br><br>
+    <div ng-controller="SampleController" >
+        Fonction de recherche angular
+        <br>
+        Search: <input ng-model="query">
+        <ul>
+            <li class="element" ng-repeat="list in List | filter:query" ng-class="{checked : list.done}">
+                <label>{{list.name}}</label>
+                <img class="thumbnail" ng-src="{{list.picture}}" ng-click="setImage(img)">
+            </li>
+        </ul>
+    </div>
+    <br>
+
+    2 - Version avec le routing : mettre #/list à la fin de l'url
+    <br>
+    <a href="#list">Routing List</a> &nbsp; <a href="#/">Otherwrise routing</a> &nbsp; <a href="#/rest/list/">Rest</a>
+    <div ng-view></div>
+  </body>
+</html>

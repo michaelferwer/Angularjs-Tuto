@@ -1,0 +1,22 @@
+body{
+
+}
+
+
+.checked{
+	text-decoration:line-through;
+}
+
+.element{
+	min-width:100px;
+}
+
+.picture{
+	 max-width:200px;
+	 vertical-align:middle;
+}
+
+.thumbnail{
+	 max-width:100px;
+	 vertical-align:middle;
+}

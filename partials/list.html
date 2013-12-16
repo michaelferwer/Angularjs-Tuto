@@ -1,0 +1,12 @@
+<div>
+  <br>
+  Votre choix : <img class="picture" ng-src="{{picture}}" />
+  <br><br>
+  Search Filter Perso: <input ng-model="query"> <!--| filtrePerso:query-->
+  <ul>
+    <li class="element" ng-repeat="list in List | filtrePerso:query" ng-class="{checked : list.done}">
+      <label>{{list.name}}</label>
+      <img class="thumbnail" ng-src="{{list.picture}}" ng-click="setImage(list.picture)">
+    </li>
+  </ul>
+</div>
