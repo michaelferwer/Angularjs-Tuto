@@ -2,7 +2,6 @@ body{
 
 }
 
-
 .checked{
 	text-decoration:line-through;
 }
@@ -19,4 +18,34 @@ body{
 .thumbnail{
 	 max-width:100px;
 	 vertical-align:middle;
+}
+
+.views.ng-enter{
+    -webkit-animation: 0.5s fade-in;
+    animation: 0.5s fade-in;
+}
+
+.views.ng-leave{
+    -webkit-animation: 0.5s fade-out;
+    animation: 0.5s fade-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-webkit-keyframes  fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }

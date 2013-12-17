@@ -7,22 +7,24 @@
 
     ExampleAppServices.factory('ServiceGetList',
         function ($resource){
-            return $resource('http://localhost/angular/data.json',
+            return $resource('data.json',
                 {},
-                {get: {method:'GET'}}
+                {
+                    get: {method:'GET', isArray: true}
+                }
             );
         }
     );
 
 	// charger le module ngRoute et ExampleAppServices
-	var ExampleApp = angular.module('ExampleApp', ['ngRoute','ExampleAppServices']);
+	var ExampleApp = angular.module('ExampleApp', ['ngRoute','ngAnimate','ExampleAppServices']);
 
    // utilisation du service routeProvider
    ExampleApp.config(function routeProvider ($routeProvider){
 		$routeProvider.
             when('/list',{
                 templateUrl: 'partials/list.html',
-                controller: 'RoutingController'
+                controller: 'BasicController'
             }).
             when('/rest/list',{
                 templateUrl: 'partials/rest.html',
@@ -33,23 +35,12 @@
             });
     });
 
-    // Déclaration du controller RoutingController pour le module ExampleApp, routing pris en compte,
-    // on ne peut l'utiliser en dehors du routing
-    ExampleApp.controller('RestController', function RestController ($scope, $http, ServiceGetList) {
-        var promise = ServiceGetList.get().$promise; //{name:'data'}
-        promise.then(function(res) {$scope.data = res; console.log(res);});
-        promise.catch(function(res,exception) {$scope.data = res; console.log(res);console.log(exception);});
-        console.log(promise);
-    });
-
-
-    // Déclaration du controller RoutingController pour le module ExampleApp, routing pris en compte,
-    // on ne peut l'utiliser en dehors du routing
-	ExampleApp.controller('RoutingController', function RoutingController ($scope, $http) {
+    // Déclaration du controller BasicController pour le module ExampleApp
+	ExampleApp.controller('BasicController', function BasicController ($scope, $http) {
 		$scope.List = [];
 
 		// Requete http 
-		$http.get('data.json').success(function(data){
+		$http.get('http://localhost/angular/data.json').success(function(data){
 			$scope.List = data;
             $scope.picture = data[0].picture;
 		});
@@ -85,6 +76,14 @@
         };
     });
 
+    // Déclaration du controller RestController pour le module ExampleApp
+    ExampleApp.controller('RestController', function RestController ($scope, $http, ServiceGetList) {
+        ServiceGetList.get({},function(data) {
+            $scope.data = data;
+        },function(response){
+            $scope.data = response;
+        });
+    });
 
 
 })();

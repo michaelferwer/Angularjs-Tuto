@@ -7,12 +7,16 @@
     <meta name="description" content="Tuto" />
     <meta name="author" content="auteur">
     <script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+
     <script type='text/javascript' src="angular.min.js"></script>
     <script type='text/javascript' src="angular-route.min.js"></script>
     <script type='text/javascript' src="angular-resource.min.js"></script>
+    <script type='text/javascript' src="angular-animate.min.js"></script>
+
     <script type='text/javascript' src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Angular JS Tuto</title>
+
   </head>
   <body>
 
@@ -35,7 +39,12 @@
 
     2 - Version avec le routing : mettre #/list à la fin de l'url
     <br>
-    <a href="#list">Routing List</a> &nbsp; <a href="#/">Otherwrise routing</a> &nbsp; <a href="#/rest/list/">Rest</a>
-    <div ng-view></div>
+    <a href="#list"> List</a>
+    &nbsp; <a href="#/">Otherwrise routing</a>
+    &nbsp; <a href="#/rest/list/">Rest</a>
+    &nbsp; <a href="#/animation">Animation</a>
+
+    <div ng-view class="views"></div>
+
   </body>
 </html>
